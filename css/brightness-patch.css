@@ -1,0 +1,209 @@
+/* ============================================================
+   THE ARCHIVES OF CLAN LAR — Brightness Patch
+   Improves contrast on body text, labels, forms, notes
+   Works alongside existing style.css
+   ============================================================ */
+
+/* ── Body text — lift from dim to readable ─────────────────── */
+body {
+    color: #c4c0b8;
+}
+
+p, li, td, th, dd, dt {
+    color: #bbb7af;
+}
+
+/* ── Headings — crisp and clear ────────────────────────────── */
+h1, h2, h3, h4 {
+    color: #dbd8d0;
+}
+
+/* ── Form labels — more visible against dark backgrounds ──── */
+.form-label {
+    color: #b8b4ac;
+    font-size: 0.78rem;
+}
+
+/* ── Form inputs — text legible on dark fields ────────────── */
+.form-input,
+.form-textarea,
+.form-select {
+    color: #d0cdc6;
+    background: rgba(12, 12, 16, 0.7);
+    border-color: rgba(80, 78, 90, 0.35);
+}
+
+.form-input::placeholder,
+.form-textarea::placeholder {
+    color: #5a5750;
+}
+
+.form-input:focus,
+.form-textarea:focus,
+.form-select:focus {
+    border-color: rgba(106, 158, 180, 0.45);
+    color: #e0ddd6;
+}
+
+/* ── Descriptions & hints — subtle but readable ───────────── */
+.form-header__desc,
+.form-group small,
+.form-group .hint {
+    color: #9a968e;
+}
+
+/* ── Notes boxes — clearer text ───────────────────────────── */
+.notes-box ul {
+    color: #a09c94;
+}
+
+.notes-box ul strong {
+    color: #c8c4bc;
+}
+
+.notes-box ul em {
+    color: #7bb8d0;
+}
+
+.notes-box--card ul em {
+    color: #e07888;
+}
+
+/* ── Example request boxes — styled as formatted quotes ───── */
+.example-box {
+    background: rgba(18, 19, 26, 0.5);
+    padding: 1.1rem 1.4rem;
+}
+
+.example-box__label {
+    color: #706c64;
+}
+
+.example-box__text {
+    color: #a8a49c;
+    line-height: 1.75;
+}
+
+/* ── Tab labels — better visibility ───────────────────────── */
+.contact-tab {
+    color: #7a766e;
+}
+
+.contact-tab:hover {
+    color: #b0aca4;
+}
+
+.contact-tab.active {
+    color: #dbd8d0;
+}
+
+.contact-tab .tab-recipient {
+    color: #a09c94;
+}
+
+.contact-tab.active .tab-recipient {
+    color: #7bb8d0;
+}
+
+/* ── Navigation links — readable in header ────────────────── */
+.nav-link {
+    color: #8a867e;
+}
+
+.nav-link:hover {
+    color: #c8c4bc;
+}
+
+.nav-link.active {
+    color: #dbd8d0;
+}
+
+/* ── Category filters & tags ──────────────────────────────── */
+.category-tag,
+.filter-btn {
+    color: #8a867e;
+}
+
+.category-tag:hover,
+.filter-btn:hover,
+.filter-btn.active {
+    color: #c8c4bc;
+}
+
+/* ── Alert boxes — readable messages ──────────────────────── */
+.alert {
+    color: #c4c0b8;
+}
+
+.alert--error {
+    color: #e8a0a0;
+    background: rgba(200, 60, 60, 0.08);
+    border-color: rgba(200, 60, 60, 0.2);
+}
+
+.alert--success {
+    color: #a0d8a8;
+    background: rgba(80, 200, 120, 0.06);
+    border-color: rgba(80, 200, 120, 0.15);
+}
+
+/* ── Radio options — label text ───────────────────────────── */
+.radio-option {
+    color: #b0aca4;
+}
+
+/* ── Buttons — ensure sufficient contrast ─────────────────── */
+.btn {
+    color: #d0cdc6;
+}
+
+.btn--primary {
+    color: #e8e5de;
+}
+
+/* ── Ornamental dividers — slightly brighter ──────────────── */
+.ornament {
+    color: #4a4640;
+}
+
+/* ── Success card — clear feedback ────────────────────────── */
+.success-card__title {
+    color: #dbd8d0;
+}
+
+.success-card__text {
+    color: #a8a49c;
+}
+
+/* ── Comment section ──────────────────────────────────────── */
+.comment-author {
+    color: #c8c4bc;
+}
+
+.comment-text {
+    color: #b0aca4;
+    line-height: 1.75;
+}
+
+.comment-meta {
+    color: #5e5a52;
+}
+
+/* ── Footer ───────────────────────────────────────────────── */
+.site-footer {
+    color: #4a4640;
+}
+
+/* ── Scrollbar (for notification dropdown) ────────────────── */
+.notif-dropdown::-webkit-scrollbar {
+    width: 4px;
+}
+
+.notif-dropdown::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.notif-dropdown::-webkit-scrollbar-thumb {
+    background: rgba(90, 138, 158, 0.2);
+    border-radius: 2px;
+}
