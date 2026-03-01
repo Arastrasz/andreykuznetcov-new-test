@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Crimson Bastion — Bastion Sanguinaris · @Vaelarn</title>
+  <meta name="description" content="A Vampire Stronghold in Blackreach. Walk the Crimson Hall, explore the Scarlet Archive, and discover the hidden path to the Temple of Molag Bal.">
+  <meta property="og:title" content="The Crimson Bastion — Bastion Sanguinaris · @Vaelarn">
+  <meta property="og:description" content="Vampire stronghold in Blackreach. Feast hall, archive, and a passage nobody talks about.">
+  <meta property="og:image" content="img/bastion-bg.png">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#b8445a">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=IBM+Plex+Mono:wght@300;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>◆</text></svg>">
+  <style>
+    :root { --house-accent: rgba(224,96,122,0.5); }
+    body { background: var(--crimson-bg); }
+    ::selection { background: var(--crimson-deep); color: var(--crimson-glow); }
+    .page-bg { position: fixed; inset: 0; background: radial-gradient(ellipse 60% 30% at 50% 10%, rgba(184,68,90,0.08), transparent), radial-gradient(ellipse 40% 20% at 50% 90%, rgba(140,40,55,0.05), transparent), var(--crimson-bg); z-index: -1; }
+    .hero-line { opacity: 0; transform: translateY(15px); animation: heroReveal 0.9s ease forwards; }
+    .hero-line:nth-child(1) { animation-delay: 0.2s; }
+    .hero-line:nth-child(2) { animation-delay: 0.4s; }
+    .hero-line:nth-child(3) { animation-delay: 0.6s; }
+    .hero-line:nth-child(4) { animation-delay: 0.8s; }
+    .hero-line:nth-child(5) { animation-delay: 1.0s; }
+    @keyframes heroReveal { to { opacity: 1; transform: translateY(0); } }
+    .accent { color: var(--crimson); }
+    .accent-deep { color: var(--crimson-deep); }
+    .divider-ornate--crimson .orn { background: var(--crimson-bg); }
+
+    /* ===== CENTERING & IMAGE OVERRIDES ===== */
+    .divider-line,.divider-ornate,.divider { display:flex!important; align-items:center!important; justify-content:center!important; text-align:center!important; width:100%!important; }
+    .house-section__title,.chapter__title { text-align:center!important; width:100%!important; }
+    .fade-in { width:100%!important; }
+    .gallery-item img { max-height:220px!important; object-fit:cover!important; }
+    .image-gallery--3 > .gallery-item:first-child img,
+    .image-gallery--2x3 > .gallery-item:first-child img,
+    .image-gallery--2x3 > .gallery-item:nth-child(4) img { max-height:280px!important; }
+    @media(max-width:640px) { .gallery-item img { max-height:180px!important; } .image-gallery--3 > .gallery-item:first-child img,.image-gallery--2x3 > .gallery-item:first-child img { max-height:180px!important; } }
+
+    /* ===== CINEMATIC CHAPTERS ===== */
+    .chapter { padding:5rem 0; position:relative; }
+    .chapter + .chapter { border-top:1px solid rgba(224,96,122,0.06); }
+    .chapter__number { font-family:var(--font-display); font-size:0.6rem; letter-spacing:0.6em; text-transform:uppercase; color:var(--crimson-deep); text-align:center; margin-bottom:0.5rem; opacity:0.6; }
+    .chapter__title { font-family:var(--font-display); font-size:clamp(1.2rem,2.8vw,1.8rem); letter-spacing:0.35em; text-transform:uppercase; color:var(--crimson); text-align:center; margin-bottom:1rem; }
+    @media(max-width:640px) { .chapter__title { font-size:clamp(0.9rem,3.5vw,1.15rem); letter-spacing:0.2em; } }
+
+    /* Hero background */
+    .house-hero--crimson { position:relative; overflow:hidden; }
+    .house-hero--crimson::before { content:''; position:absolute; inset:0; background:url('img/bastion-bg.png') center 40% / cover no-repeat; opacity:0.22; filter:saturate(0.6) brightness(0.45) sepia(0.3); z-index:0; }
+    .house-hero--crimson::after { content:''; position:absolute; inset:0; background: radial-gradient(ellipse 80% 60% at 50% 40%, rgba(140,30,50,0.25), transparent 70%), linear-gradient(to top, var(--crimson-bg) 0%, rgba(6,6,8,0.3) 35%, transparent 60%), linear-gradient(to bottom, var(--crimson-bg) 0%, rgba(6,6,8,0.5) 20%, transparent 50%), radial-gradient(ellipse 50% 40% at 50% 50%, rgba(184,68,90,0.08), transparent); z-index:0; }
+    .house-hero--crimson .hero-content { position:relative; z-index:1; }
+    .chapter__subtitle { font-family:var(--font-body); font-style:italic; font-size:1.05rem; color:var(--text-dim); text-align:center; margin-bottom:2.5rem; max-width:620px; margin-left:auto; margin-right:auto; line-height:1.7; }
+
+    /* ===== FULLSCREEN LIGHTBOX ===== */
+    .lightbox { display:none; position:fixed; inset:0; z-index:9999; background:rgba(2,4,8,0.96); cursor:grab; }
+    .lightbox.active { display:flex; align-items:center; justify-content:center; }
+    .lightbox.dragging { cursor:grabbing; }
+    .lightbox__img { max-width:95vw; max-height:90vh; display:block; transition:transform 0.15s ease; transform-origin:center center; user-select:none; -webkit-user-drag:none; }
+    .lightbox__close { position:fixed; top:1.5rem; right:2rem; z-index:10000; background:none; border:1px solid rgba(224,96,122,0.3); color:var(--crimson); font-family:var(--font-label); font-size:0.6rem; letter-spacing:0.2em; text-transform:uppercase; padding:0.5rem 1rem; cursor:pointer; transition:all 0.3s ease; }
+    .lightbox__close:hover { background:rgba(224,96,122,0.1); border-color:var(--crimson); }
+    .lightbox__controls { position:fixed; bottom:2rem; left:50%; transform:translateX(-50%); z-index:10000; display:flex; gap:0.5rem; }
+    .lightbox__btn { background:rgba(0,0,0,0.6); border:1px solid rgba(224,96,122,0.2); color:var(--crimson); font-family:var(--font-label); font-size:0.65rem; letter-spacing:0.15em; padding:0.5rem 1.25rem; cursor:pointer; transition:all 0.3s ease; }
+    .lightbox__btn:hover { background:rgba(224,96,122,0.1); border-color:var(--crimson); }
+    .lightbox__caption { position:fixed; bottom:5rem; left:50%; transform:translateX(-50%); z-index:10000; font-family:var(--font-label); font-size:0.55rem; letter-spacing:0.25em; text-transform:uppercase; color:var(--text-dim); white-space:nowrap; }
+    .lightbox__nav { position:fixed; top:50%; transform:translateY(-50%); z-index:10000; background:rgba(0,0,0,0.4); border:1px solid rgba(224,96,122,0.15); color:var(--crimson); font-size:1.5rem; padding:0.75rem 1rem; cursor:pointer; transition:all 0.3s ease; line-height:1; }
+    .lightbox__nav:hover { background:rgba(224,96,122,0.1); }
+    .lightbox__nav--prev { left:1rem; }
+    .lightbox__nav--next { right:1rem; }
+  </style>
+</head>
+<body>
+  <div class="page-bg"></div>
+    <div class="loader" id="loader">
+    <div class="loader__ornament">✠ — ◆ — ✠</div>
+    <div class="loader__brand">The Crimson Bastion</div>
+  </div>
+  <div class="page-wrapper">
+    
+    <nav class="nav" id="nav">
+      <a href="/" class="nav-brand">◆ Clan Lar</a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#fortress">Fortress</a></li>
+        <li><a href="#hall">The Hall</a></li>
+        <li><a href="#archive-section">Archive</a></li>
+        <li><a href="#path">Hidden Path</a></li>
+        <li><a href="#invitation">Visit</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+              <li><a href="news">News</a></li>
+        <li><a href="login">Enter</a></li>
+      </ul>
+      <button class="nav__search" id="searchBtn">⌕ Search</button>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation"><span></span><span></span><span></span></button>
+    </nav>
+
+    <!-- Hero -->
+    <section class="house-hero house-hero--crimson">
+      <div class="hero-content">
+        <div class="hero-line"><div class="divider-ornate divider-ornate--crimson"><span class="orn">✠ &nbsp;◆&nbsp; ◇ &nbsp;◆&nbsp; ◇ &nbsp;◆&nbsp; ✠</span></div></div>
+        <div class="hero-line"><div class="label accent-deep" style="letter-spacing:0.5em;text-align:center;">The Crimson Gates Stand Open</div></div>
+        <div class="hero-line"><h1 class="display-title accent" style="text-align:center;">The Crimson Bastion</h1></div>
+        <div class="hero-line">
+          <div class="subtitle" style="text-align:center;">A Vampire Stronghold in Blackreach</div>
+          <div style="margin-top:0.75rem;"><div class="divider-line divider-line--crimson"><span class="orn">◆ Risen From Ruin and Memory ◆</span></div></div>
+        </div>
+        <div class="hero-line"><div class="divider-ornate divider-ornate--crimson"><span class="orn">✠ &nbsp;◆&nbsp; ◇ &nbsp;◆&nbsp; ◇ &nbsp;◆&nbsp; ✠</span></div></div>
+      </div>
+    </section>
+
+    <!-- THE FORTRESS -->
+    <section class="chapter" id="fortress">
+      <div class="content-narrow" style="text-align:center;">
+        <div class="fade-in">
+          <div class="divider-ornate divider-ornate--crimson"><span class="orn">◆ ◇ ◆</span></div>
+          <div class="chapter__number">Chapter I</div>
+          <h2 class="chapter__title">🏰 The Fortress</h2>
+          <div class="divider-line divider-line--crimson"><span class="orn">◇ ◆ ◇</span></div>
+        </div>
+        <div class="house-prose fade-in" style="text-align:left;">
+          <p>Descend into the deep twilight of Blackreach and set foot in a stronghold risen from ruin and memory. Silk banners drape the ancient walls, scented braziers burn with undying flame — a warmth that gives no comfort, carrying with it the faint, lingering trace of incense long since forgotten. Gargoyle sentinels loom over bridge and bastion alike, as still and silent as the stone that birthed them.</p>
+          <p>Most visitors don’t notice anything special at first. They step inside, marvel at the stonework, the banners, the decorum. Then it settles in — that sensation between the shoulder blades. The unmistakable feeling of being <em>observed</em>. <em>Appraised</em>.</p>
+        </div>
+      </div>
+      <div class="content-wide">
+        <div class="image-gallery image-gallery--3 fade-in">
+          <div class="gallery-item" data-lb="0"><img src="img/bastion/fortress-01.png" alt="The Fortress entrance hall" loading="lazy"><div class="gallery-item__caption">The grand entrance — silk banners, undying flame</div></div>
+          <div class="gallery-item" data-lb="1"><img src="img/bastion/fortress-02.png" alt="Gargoyle sentinel and incense" loading="lazy"><div class="gallery-item__caption">Gargoyle sentinels watch in silence</div></div>
+          <div class="gallery-item" data-lb="2"><img src="img/bastion/fortress-03.png" alt="Fortress seating alcove" loading="lazy"><div class="gallery-item__caption">Every corner, appraised</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- THE CRIMSON HALL -->
+    <section class="chapter" id="hall">
+      <div class="content-narrow" style="text-align:center;">
+        <div class="fade-in">
+          <div class="divider-ornate divider-ornate--crimson"><span class="orn">♛ ◆ ♛</span></div>
+          <div class="chapter__number">Chapter II</div>
+          <h2 class="chapter__title">♛ The Crimson Hall</h2>
+          <div class="divider-line divider-line--crimson"><span class="orn">◇ ◆ ◇</span></div>
+        </div>
+        <div class="house-prose fade-in" style="text-align:left;">
+          <p>Walk the Crimson Hall, where <em>Sanguine’s favour lives in the very air you breathe!</em> Bloodwine flows without end, music bleeds into warm crimson-lit stone, and laughter drifts through halls whose walls have witnessed more than any living soul could tell. The light is low. Crimson. Forgiving. Every goblet raised is a tribute to the Lord of Revelry, every dance a step in his eternal feast.</p>
+          <span class="accent-text accent-text--crimson">You don’t enter this feast. You are absorbed into it.<br>Whether you mean to or not.</span>
+        </div>
+      </div>
+      <div class="content-wide">
+        <div class="image-gallery image-gallery--2x3 fade-in">
+          <div class="gallery-item" data-lb="3"><img src="img/bastion/hall-01.png" alt="The great feast hall" loading="lazy"><div class="gallery-item__caption">The feast hall — the feast never ends</div></div>
+          <div class="gallery-item" data-lb="4"><img src="img/bastion/hall-02.png"  loading="lazy"><div class="gallery-item__caption">Where the records are kept</div></div>
+          <div class="gallery-item" data-lb="5"><img src="img/bastion/hall-03.png" alt="Statue of Sanguine" loading="lazy"><div class="gallery-item__caption">Lord of Revelry — presiding over the hall</div></div>
+          <div class="gallery-item" data-lb="6"><img src="img/bastion/hall-04.png" alt="Bloodwine barrel" loading="lazy"><div class="gallery-item__caption">The bloodwine barrel</div></div>
+          <div class="gallery-item" data-lb="7"><img src="img/bastion/hall-05.png"  loading="lazy"><div class="gallery-item__caption">A quiet corner — if you can find one</div></div>
+          <div class="gallery-item" data-lb="8"><img src="img/bastion/hall-06.png" alt="Great bloodwine barrel" loading="lazy"><div class="gallery-item__caption">Great bloodwine barrel - never runs dry</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- THE SCARLET ARCHIVE -->
+    <section class="chapter" id="archive-section">
+      <div class="content-narrow" style="text-align:center;">
+        <div class="fade-in">
+          <div class="divider-ornate divider-ornate--crimson"><span class="orn">📖 ◆ 📖</span></div>
+          <div class="chapter__number">Chapter III</div>
+          <h2 class="chapter__title">📖 The Scarlet Archive</h2>
+          <div class="divider-line divider-line--crimson"><span class="orn">◇ ◆ ◇</span></div>
+        </div>
+        <div class="house-prose fade-in" style="text-align:left;">
+          <p><em class="accent-deep" style="font-size:1.1rem;">Not all temptations come wrapped in silk.</em></p>
+          <p>Beyond the revelry lies the Archive — modest in size, yet holding more forbidden knowledge than the grand libraries of Tamriel’s greatest mages. Dust hangs in the air like a veil drawn between ages, and every shelf here is worth more than most castles. Ancient tomes and scrolls so brittle their parchment survives only by enchantments that shimmer faintly in the candlelight.</p>
+          <p>Ayleid texts, Daedric treatises, histories of bloodlines erased by fire, war, or deliberate forgetting — the kind of secrets scholars would trade years of life for, sitting here quietly gathering dust. Trace your fingers along the spines — warmth in one, a cold prickle in the next. Some books hum softly when no one is looking. Not everything here is bound in paper. <em>Not everything wants to be read.</em></p>
+        </div>
+      </div>
+      <div class="content-wide">
+        <div class="image-gallery image-gallery--3 fade-in">
+          <div class="gallery-item" data-lb="9"><img src="img/bastion/archive-01.png" alt="The Scarlet Archive" loading="lazy"><div class="gallery-item__caption">The Archive</div></div>
+          <div class="gallery-item" data-lb="10"><img src="img/bastion/archive-02.png" alt="Floating books" loading="lazy"><div class="gallery-item__caption">Not everything wants to be read</div></div>
+          <div class="gallery-item" data-lb="11"><img src="img/bastion/archive-03.png" alt="Scholar’s reading alcove" loading="lazy"><div class="gallery-item__caption">A scholar’s alcove</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- THE HIDDEN PATH -->
+    <section class="chapter" id="path">
+      <div class="content-narrow" style="text-align:center;">
+        <div class="fade-in">
+          <div class="divider-ornate divider-ornate--crimson"><span class="orn">🔥 ▪ ▫ ▪ 🔥</span></div>
+          <div class="chapter__number">Chapter IV</div>
+          <h2 class="chapter__title">🔥 The Hidden Path</h2>
+          <div class="divider-line divider-line--crimson"><span class="orn">▪ ◆ ▪</span></div>
+        </div>
+        <div class="house-prose fade-in" style="text-align:left;">
+          <p>And for those bold enough to linger — a chimney crackles in the library, same as any other. Warm. Ordinary. Inviting, even. But stay a while and you’ll notice — smoke should drift. This smoke <em>climbs</em>. Slow. Purposeful. Coiling upward as if tracing a path already known.</p>
+          <p>They say this chimney hides a passage — a secret path along a forgotten road carved through the rock to an ancient Ayleid gate. And beyond it? The Temple of Molag Bal. A place where even revelry knows to keep its voice down.</p>
+          <span class="accent-text accent-text--crimson">But that’s only a rumor.<br>And you didn’t hear it here.</span>
+        </div>
+      </div>
+      <div class="content-wide">
+        <div class="image-gallery image-gallery--3 fade-in">
+          <div class="gallery-item" data-lb="12"><img src="img/bastion/path-01.png" alt="The hidden road" loading="lazy"><div class="gallery-item__caption">The hidden road</div></div>
+          <div class="gallery-item" data-lb="13"><img src="img/bastion/path-02.png" alt="Steps toward the gate" loading="lazy"><div class="gallery-item__caption">Stone steps toward something older</div></div>
+          <div class="gallery-item" data-lb="14"><img src="img/bastion/path-03.png" alt="The Ayleid gate" loading="lazy"><div class="gallery-item__caption">The gate — where even revelry keeps its voice down</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- THE INVITATION -->
+    <section class="chapter" id="invitation">
+      <div class="content-narrow" style="text-align:center;">
+        <div class="fade-in">
+          <div class="divider-ornate divider-ornate--crimson"><span class="orn">✉ ◆ ◇ ◆ ✉</span></div>
+          <div class="chapter__number">The Invitation</div>
+          <h2 class="chapter__title">✉ The Invitation</h2>
+          <div class="divider-line divider-line--crimson"><span class="orn">◇ ◆ ◇</span></div>
+        </div>
+        <div class="house-prose fade-in" style="text-align:center;">
+          <p>Every corner holds temptation. Every shadow remembers something it shouldn’t. Come see for yourself what darkness looks like when it’s <em>built with elegance</em>.</p>
+        </div>
+        <div class="visit-card fade-in" style="border-color:rgba(224,96,122,0.2);text-align:left;">
+          <div class="visit-card__row"><div class="visit-card__label">User ID</div><div class="visit-card__value">@Vaelarn</div></div>
+          <div class="visit-card__row"><div class="visit-card__label">Server</div><div class="visit-card__value">PC — EU</div></div>
+          <div class="visit-card__row"><div class="visit-card__label">House</div><div class="visit-card__value">Bastion Sanguinaris</div></div>
+          <div class="visit-card__row"><div class="visit-card__label">Title</div><div class="visit-card__value visit-card__value--accent accent">The Crimson Bastion</div></div>
+          <div class="visit-card__row"><div class="visit-card__label">Status</div><div class="visit-card__value">Public</div></div>
+          <div class="visit-card__row"><div class="visit-card__label">Featurable</div><div class="visit-card__value">Yes</div></div>
+          <div class="visit-card__port">
+            <div class="visit-card__port-label">Port</div>
+            <div class="visit-card__port-code" onclick="copyPort(this)" data-port='/script JumpToSpecificHouse("@Vaelarn", 79)'>/script JumpToSpecificHouse("@Vaelarn", 79)<span class="copy-hint">Click to copy</span></div>
+          </div>
+        </div>
+        <div class="fade-in" style="text-align:center;margin-top:2.5rem;width:100%;">
+          <p class="accent" style="font-style:italic;font-size:1.15rem;">Your seat has been waiting. ✠</p>
+          <div class="divider-line divider-line--crimson"><span class="orn">◆ ◇ ◆</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section class="chapter" id="gallery">
+      <div class="content-narrow" style="text-align:center;">
+        <div class="fade-in">
+          <div class="divider-ornate divider-ornate--crimson"><span class="orn">◆ ◇ ◆ ◇ ◆</span></div>
+          <h2 class="chapter__title">🖼 Gallery</h2>
+          <div class="divider-line divider-line--crimson"><span class="orn">◇ ◆ ◇</span></div>
+        </div>
+      </div>
+      <div class="content-wide">
+        <div class="image-gallery image-gallery--3 fade-in" id="extra-gallery">
+          <div class="gallery-item" data-lb="15"><img src="img/bastion/fortress-01.png" alt="The Fortress entrance hall" loading="lazy"><div class="gallery-item__caption">The grand entrance — silk banners, undying flame</div></div>
+          <div class="gallery-item" data-lb="16"><img src="img/bastion/fortress-02.png" alt="Gargoyle sentinel and incense" loading="lazy"><div class="gallery-item__caption">Gargoyle sentinels watch in silence</div></div>
+          <div class="gallery-item" data-lb="17"><img src="img/bastion/fortress-03.png" alt="Fortress seating alcove" loading="lazy"><div class="gallery-item__caption">Every corner you are being appraised</div></div>
+          <div class="gallery-item" data-lb="18"><img src="img/bastion/hall-01.png" alt="The great feast hall" loading="lazy"><div class="gallery-item__caption">The feast hall — the feast never ends</div></div>
+          <div class="gallery-item" data-lb="19"><img src="img/bastion/hall-02.png"  loading="lazy"><div class="gallery-item__caption">Where the records are kept</div></div>
+          <div class="gallery-item" data-lb="20"><img src="img/bastion/hall-03.png" alt="Statue of Sanguine" loading="lazy"><div class="gallery-item__caption">Lord of Revelry — presiding over the hall</div></div>
+          <div class="gallery-item" data-lb="21"><img src="img/bastion/hall-04.png" alt="Bloodwine barrel" loading="lazy"><div class="gallery-item__caption">The bloodwine barrel</div></div>
+          <div class="gallery-item" data-lb="22"><img src="img/bastion/hall-05.png"  loading="lazy"><div class="gallery-item__caption">A quiet corner — if you can find one</div></div>
+          <div class="gallery-item" data-lb="23"><img src="img/bastion/hall-06.png" alt="Great bloodwine barrel" loading="lazy"><div class="gallery-item__caption">Great bloodwine barrel - never runs dry</div></div>
+          <div class="gallery-item" data-lb="24"><img src="img/bastion/archive-01.png" alt="The Scarlet Archive" loading="lazy"><div class="gallery-item__caption">The Archive — books that hum when no one is looking</div></div>
+          <div class="gallery-item" data-lb="25"><img src="img/bastion/archive-02.png" alt="Floating books" loading="lazy"><div class="gallery-item__caption">Not everything wants to be read</div></div>
+          <div class="gallery-item" data-lb="26"><img src="img/bastion/archive-03.png" alt="Scholar’s reading alcove" loading="lazy"><div class="gallery-item__caption">A scholar’s alcove</div></div>
+          <div class="gallery-item" data-lb="27"><img src="img/bastion/hidden-room-01.png" alt="Hidden room one" loading="lazy"><div class="gallery-item__caption">A room that isn’t on any floor plan</div></div>
+          <div class="gallery-item" data-lb="28"><img src="img/bastion/hidden-room-02.png" alt="Hidden room two" loading="lazy"><div class="gallery-item__caption">The laboratory — sealed for good reason</div></div>
+          <div class="gallery-item" data-lb="29"><img src="img/bastion/hidden-terrace-01.png" alt="Deep passage beneath the bastion" loading="lazy"><div class="gallery-item__caption">Hidden terrace above the Bastion</div></div>
+          <div class="gallery-item" data-lb="30"><img src="img/bastion/hidden-terrace-02.png" alt="Deep passage beneath the bastion" loading="lazy"><div class="gallery-item__caption">A resting place no one was meant to find</div></div>
+          <div class="gallery-item" data-lb="31"><img src="img/bastion/path-01.png" alt="The hidden road" loading="lazy"><div class="gallery-item__caption">The hidden road</div></div>
+          <div class="gallery-item" data-lb="32"><img src="img/bastion/path-02.png" alt="Steps toward the gate" loading="lazy"><div class="gallery-item__caption">Stone steps — deeper than they look</div></div>
+          <div class="gallery-item" data-lb="33"><img src="img/bastion/path-03.png" alt="The Ayleid gate" loading="lazy"><div class="gallery-item__caption">The gate — where even revelry keeps its voice down</div></div>
+          <div class="gallery-item" data-lb="34"><img src="img/bastion/path-04.png" alt="The Ancient Gateway" loading="lazy"><div class="gallery-item__caption">The gateway at the end of the road</div></div>
+          
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer" style="border-top-color:rgba(224,96,122,0.12);">
+      <div class="footer-signature accent-deep">— Valyria, of the ruling blood of Clan Lar</div>
+      <div class="footer-meta">@Vaelarn · PC — EU</div>
+    </footer>
+  </div>
+
+  <!-- FULLSCREEN LIGHTBOX -->
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox__close" id="lbClose">✕ Close</button>
+    <button class="lightbox__nav lightbox__nav--prev" id="lbPrev">‹</button>
+    <button class="lightbox__nav lightbox__nav--next" id="lbNext">›</button>
+    <img class="lightbox__img" id="lbImg" src="" alt="" draggable="false">
+    <div class="lightbox__counter" id="lbCounter"></div>
+    <div class="lightbox__caption" id="lbCaption"></div>
+    <div class="lightbox__controls">
+      <button class="lightbox__btn" id="lbZoomIn">+ Zoom</button>
+      <button class="lightbox__btn" id="lbZoomOut">− Zoom</button>
+      <button class="lightbox__btn" id="lbReset">⟲ Reset</button>
+    </div>
+  
+  <button class="reader-toggle" id="readerToggle" aria-pressed="false">◇ Read</button>
+  <div class="search-overlay" id="searchOverlay">
+    <div class="search__box">
+      <input type="text" class="search__input" placeholder="Search houses, lore, archives… (Ctrl+K)">
+      <div class="search__results"></div>
+    </div>
+  </div>
+  </div>
+
+  <script src="js/main.js"></script>
+  <script>initLightbox();</script>
+</body>
+</html>

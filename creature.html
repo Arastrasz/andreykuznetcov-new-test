@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Creature-From-Beyond — Sword-Singer Redoubt · @Vaelarn</title>
+  <meta name="description" content="Where the line between world and void grows thin. The house is open. The lore isn’t ready yet.">
+  <meta property="og:title" content="Creature-From-Beyond — @Vaelarn">
+  <meta property="og:description" content="Where the line between world and void grows thin. The house is open. The lore isn’t ready yet.">
+  <meta property="og:image" content="img/creature-bg.webp">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#4a8a4a">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=IBM+Plex+Mono:wght@300;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>❧</text></svg>">
+  <style>
+    :root { --house-accent: rgba(122,180,122,0.5); }
+    body { background: var(--wyrd-bg); }
+    ::selection { background: var(--wyrd-deep); color: var(--wyrd-glow); }
+    .page-bg { position: fixed; inset: 0; background: radial-gradient(ellipse 60% 30% at 50% 10%, rgba(74,138,74,0.06), transparent), radial-gradient(ellipse 40% 20% at 50% 90%, rgba(40,90,40,0.04), transparent), var(--wyrd-bg); z-index: -1; }
+    .hero-line { opacity: 0; transform: translateY(15px); animation: heroReveal 0.9s ease forwards; }
+    .hero-line:nth-child(1) { animation-delay: 0.3s; }
+    .hero-line:nth-child(2) { animation-delay: 0.6s; }
+    .hero-line:nth-child(3) { animation-delay: 0.9s; }
+    .hero-line:nth-child(4) { animation-delay: 1.2s; }
+    .hero-line:nth-child(5) { animation-delay: 1.5s; }
+    @keyframes heroReveal { to { opacity: 1; transform: translateY(0); } }
+    .accent { color: var(--wyrd-green); }
+    .accent-deep { color: var(--wyrd-deep); }
+
+    /* Hero background */
+    .house-hero--wyrd { position:relative; overflow:hidden; }
+    .house-hero--wyrd::before { content:''; position:absolute; inset:0; background:url('img/creature-bg.webp') center 25% / cover no-repeat; opacity:0.15; filter:saturate(0.5) brightness(0.4); z-index:0; }
+    .house-hero--wyrd::after { content:''; position:absolute; inset:0; background: radial-gradient(ellipse 80% 60% at 50% 40%, rgba(40,90,40,0.2), transparent 70%), linear-gradient(to top, var(--wyrd-bg) 0%, rgba(6,6,8,0.3) 35%, transparent 60%), linear-gradient(to bottom, var(--wyrd-bg) 0%, rgba(6,6,8,0.5) 20%, transparent 50%); z-index:0; }
+    .house-hero--wyrd .hero-content { position:relative; z-index:1; }
+
+    .coming-soon-pulse { animation: pulse 3s ease-in-out infinite; }
+    @keyframes pulse { 0%, 100% { opacity: 0.5; } 50% { opacity: 1; } }
+
+    /* Centering */
+    .divider-line,.divider-ornate,.divider { display:flex!important; align-items:center!important; justify-content:center!important; text-align:center!important; width:100%!important; }
+    .house-section__title { text-align:center!important; width:100%!important; }
+    .fade-in { width:100%!important; }
+  </style>
+</head>
+<body>
+  <div class="page-bg"></div>
+    <div class="loader" id="loader">
+    <div class="loader__ornament">❧ — ◆ — ❧</div>
+    <div class="loader__brand">Creature-From-Beyond</div>
+  </div>
+  <div class="page-wrapper">
+    
+    <nav class="nav" id="nav">
+      <a href="/" class="nav-brand">◆ Clan Lar</a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#about">The House</a></li>
+        <li><a href="#visit">Visit</a></li>
+              <li><a href="news">News</a></li>
+        <li><a href="login">Enter</a></li>
+      </ul>
+      <button class="nav__search" id="searchBtn">⌕ Search</button>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+
+    <!-- Hero -->
+    <section class="house-hero house-hero--wyrd">
+      <div class="hero-content">
+        <div class="hero-line">
+          <div class="divider-ornate divider-ornate--wyrd"><span class="orn">❧ &nbsp;◆&nbsp; ◇ &nbsp;◆&nbsp; ◇ &nbsp;◆&nbsp; ❧</span></div>
+        </div>
+        <div class="hero-line">
+          <div class="label accent-deep" style="letter-spacing:0.45em;">Sword-Singer Redoubt</div>
+        </div>
+        <div class="hero-line">
+          <h1 class="display-title accent">Creature-From-Beyond</h1>
+        </div>
+        <div class="hero-line">
+          <div class="subtitle">Where the line between world and void grows thin</div>
+          <div style="margin-top:0.75rem;">
+            <div class="divider-line divider-line--wyrd"><span class="orn">◆ The house is open ◆</span></div>
+          </div>
+        </div>
+        <div class="hero-line">
+          <div class="divider-ornate divider-ornate--wyrd"><span class="orn">❧ &nbsp;◆&nbsp; ◇ &nbsp;◆&nbsp; ◇ &nbsp;◆&nbsp; ❧</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section class="house-section" id="about">
+      <div class="content-narrow">
+        <div class="fade-in" style="text-align:center;">
+          <div class="divider-line divider-line--wyrd"><span class="orn">❧ ◆ ❧</span></div>
+          <h2 class="house-section__title" style="color: var(--wyrd-green);">❧ &nbsp;T h e &nbsp; H o u s e</h2>
+          <div class="divider-line divider-line--wyrd"><span class="orn">◇ ◆ ◇</span></div>
+        </div>
+        <div class="house-prose fade-in" style="text-align: center;">
+          <p>This one got built before the story did. The house is open, you can walk through it, but the written record hasn’t caught up yet. What’s in there doesn’t wait for lore to be ready. It just <em>is</em>.</p>
+          
+          <div style="margin: 3rem 0;">
+            <div class="divider-ornate divider-ornate--wyrd"><span class="orn">◇ ◆ ◇</span></div>
+          </div>
+          
+          <p style="color: var(--wyrd-green); font-style:italic; font-size: 1.15rem;" class="coming-soon-pulse">The written record is still taking shape.</p>
+          
+          <p style="color: var(--text-dim); margin-top: 2rem;">The house can be visited in-game. The lore document is in progress.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Visit -->
+    <section class="house-section" id="visit">
+      <div class="content-narrow">
+        <div class="fade-in" style="text-align:center;">
+          <div class="divider-ornate divider-ornate--wyrd"><span class="orn">❧ ◆ ❧</span></div>
+        </div>
+        
+        <div class="visit-card fade-in" style="border-color: rgba(122,180,122,0.15);">
+          <div style="text-align:center; margin-bottom:2rem;">
+            <div class="label accent-deep" style="margin-bottom:0.5rem;">Sword-Singer Redoubt</div>
+            <div style="font-family:var(--font-display); font-size:1.3rem; letter-spacing:0.2em; text-transform:uppercase;" class="accent">Creature-From-Beyond</div>
+          </div>
+          <div class="visit-card__row"><div class="visit-card__label">User ID</div><div class="visit-card__value">@Vaelarn</div></div>
+          <div class="visit-card__row"><div class="visit-card__label">Server</div><div class="visit-card__value">PC — EU</div></div>
+          <div class="visit-card__row"><div class="visit-card__label">House</div><div class="visit-card__value">Sword-Singer Redoubt</div></div>
+          <div class="visit-card__row"><div class="visit-card__label">Status</div><div class="visit-card__value">Public</div></div>
+          <div class="visit-card__row"><div class="visit-card__label">Lore</div><div class="visit-card__value accent" style="font-style:italic;">In progress</div></div>
+          <div class="visit-card__port">
+            <div class="visit-card__port-label">Port</div>
+            <div class="visit-card__port-code" onclick="copyPort(this)" data-port='/script JumpToSpecificHouse("@Vaelarn", 71)'>/script JumpToSpecificHouse("@Vaelarn", 71)<span class="copy-hint">Click to copy</span></div>
+          </div>
+        </div>
+        
+        <div class="fade-in" style="text-align:center; margin-top:2.5rem;">
+          <div class="divider-line divider-line--wyrd"><span class="orn">❧ ◆ ❧</span></div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer" style="border-top-color: rgba(122,180,122,0.1);">
+      <div class="footer-signature accent-deep">— Valyria, of the ruling blood of Clan Lar</div>
+      <div class="footer-meta">@Vaelarn · PC — EU</div>
+    </footer>
+  
+  <div class="search-overlay" id="searchOverlay">
+    <div class="search__box">
+      <input type="text" class="search__input" placeholder="Search houses, lore, archives… (Ctrl+K)">
+      <div class="search__results"></div>
+    </div>
+  </div>
+  </div>
+
+  <script src="js/main.js"></script>
+
+</body>
+</html>

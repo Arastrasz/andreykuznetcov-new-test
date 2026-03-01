@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Abagarlas — Notes on the Passage Beyond · @Vaelarn</title>
+  <meta name="description" content="Through the Secret Passage, Beyond a Forgotten Gate. An Ayleid ruin beneath Coldharbour Surreal Estate, explored and documented by Valyria of Clan Lar.">
+  <meta property="og:title" content="Abagarlas — Notes on the Passage Beyond · @Vaelarn">
+  <meta property="og:description" content="Ayleid ruin above the Bastion. Sealed corridors, a throne, a veil into Coldharbour, and a forge that shouldn’t exist.">
+  <meta property="og:image" content="img/abagarlas-interior.jpg">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#6a9eb4">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=IBM+Plex+Mono:wght@300;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>◇</text></svg>">
+  <style>
+    :root { --house-accent: rgba(106,158,180,0.5); }
+    body { background: var(--ayleid-bg); }
+    ::selection { background: var(--ayleid-deep); color: var(--ayleid-glow); }
+    .page-bg { position: fixed; inset: 0; background: radial-gradient(ellipse 60% 30% at 50% 10%, rgba(42,74,90,0.1), transparent), radial-gradient(ellipse 40% 20% at 50% 90%, rgba(20,50,70,0.06), transparent), var(--ayleid-bg); z-index: -1; }
+    .hero-line { opacity: 0; transform: translateY(15px); animation: heroReveal 0.9s ease forwards; }
+    .hero-line:nth-child(1) { animation-delay: 0.2s; }
+    .hero-line:nth-child(2) { animation-delay: 0.4s; }
+    .hero-line:nth-child(3) { animation-delay: 0.6s; }
+    .hero-line:nth-child(4) { animation-delay: 0.8s; }
+    .hero-line:nth-child(5) { animation-delay: 1.0s; }
+    @keyframes heroReveal { to { opacity: 1; transform: translateY(0); } }
+    .accent { color: var(--ayleid-blue); }
+    .accent-glow { color: var(--ayleid-glow); }
+    .accent-deep { color: var(--ayleid-deep); }
+    .divider-ornate--ayleid .orn { background: var(--ayleid-bg); }
+
+    /* ===== CENTERING & IMAGE OVERRIDES ===== */
+    .divider-line,.divider-ornate,.divider { display:flex!important; align-items:center!important; justify-content:center!important; text-align:center!important; width:100%!important; }
+    .house-section__title,.chapter__title { text-align:center!important; width:100%!important; }
+    .fade-in { width:100%!important; }
+    .gallery-item img { max-height:220px!important; object-fit:cover!important; }
+    .image-gallery--2 > .gallery-item img { max-height:240px!important; }
+    @media(max-width:640px) { .gallery-item img,.cinema-img img { max-height:180px!important; } }
+
+    /* ===== CINEMATIC CHAPTERS ===== */
+    .chapter { padding:5rem 0; position:relative; }
+    .chapter + .chapter { border-top:1px solid rgba(106,158,180,0.06); }
+    .chapter__number { font-family:var(--font-display); font-size:0.6rem; letter-spacing:0.6em; text-transform:uppercase; color:var(--ayleid-deep); text-align:center; margin-bottom:0.5rem; opacity:0.6; }
+    .chapter__title { font-family:var(--font-display); font-size:clamp(1.4rem,3vw,2rem); letter-spacing:0.3em; text-transform:uppercase; color:var(--ayleid-blue); text-align:center; margin-bottom:1rem; }
+    .chapter__subtitle { font-family:var(--font-body); font-style:italic; font-size:1.05rem; color:var(--text-dim); text-align:center; margin-bottom:2.5rem; max-width:620px; margin-left:auto; margin-right:auto; line-height:1.7; }
+    .chapter__lore { font-family:var(--font-body); font-style:italic; font-size:0.95rem; color:var(--text-dim); text-align:center; margin-top:1.5rem; padding:1rem 2rem; border-left:2px solid rgba(106,158,180,0.15); border-right:2px solid rgba(106,158,180,0.15); max-width:650px; margin-left:auto; margin-right:auto; line-height:1.8; }
+    .chapter__lore em { color:var(--text-secondary); }
+    .chapter__lore strong { color:var(--ayleid-blue); font-weight:500; }
+
+    /* Cinema single image */
+    .cinema-image { max-width:var(--wide-width); margin:0 auto; padding:0 2rem; }
+    .cinema-image .gallery-item { border:1px solid rgba(106,158,180,0.1); }
+    .cinema-image .gallery-item img { max-height:320px!important; width:100%; cursor:pointer; }
+    @media(max-width:640px) { .cinema-image .gallery-item img { max-height:200px!important; } }
+
+    /* Download card */
+    .download-card { border:1px solid rgba(106,158,180,0.15); padding:2.5rem 3rem; max-width:560px; margin:2rem auto; background:rgba(0,0,0,0.3); text-align:center; }
+    .download-card__version { font-family:var(--font-mono); font-size:0.75rem; letter-spacing:0.15em; color:var(--ayleid-deep); margin-bottom:1rem; }
+    .download-card__desc { font-family:var(--font-body); font-style:italic; font-size:0.95rem; color:var(--text-secondary); line-height:1.7; margin-bottom:1.5rem; }
+    .download-btn { display:inline-block; font-family:var(--font-label); font-size:0.6rem; letter-spacing:0.3em; text-transform:uppercase; color:var(--ayleid-blue); border:1px solid rgba(106,158,180,0.3); padding:0.75rem 2rem; margin:0.25rem; transition:all 0.3s ease; text-decoration:none; }
+    .download-btn:hover { background:rgba(106,158,180,0.08); border-color:var(--ayleid-blue); color:var(--ayleid-glow); }
+    .download-card__meta { margin-top:1.25rem; font-family:var(--font-mono); font-size:0.65rem; color:var(--text-faint); }
+
+    /* Seal */
+    .seal-section { text-align:center; padding:3rem 0; border-top:1px dashed rgba(106,158,180,0.2); border-bottom:1px dashed rgba(106,158,180,0.2); margin:2rem 0; }
+
+    /* ===== FULLSCREEN LIGHTBOX ===== */
+    .lightbox { display:none; position:fixed; inset:0; z-index:9999; background:rgba(2,4,8,0.96); cursor:grab; }
+    .lightbox.active { display:flex; align-items:center; justify-content:center; }
+    .lightbox.dragging { cursor:grabbing; }
+    .lightbox__img { max-width:95vw; max-height:90vh; display:block; transition:transform 0.15s ease; transform-origin:center center; user-select:none; -webkit-user-drag:none; }
+    .lightbox__close { position:fixed; top:1.5rem; right:2rem; z-index:10000; background:none; border:1px solid rgba(106,158,180,0.3); color:var(--ayleid-blue); font-family:var(--font-label); font-size:0.6rem; letter-spacing:0.2em; text-transform:uppercase; padding:0.5rem 1rem; cursor:pointer; transition:all 0.3s ease; }
+    .lightbox__close:hover { background:rgba(106,158,180,0.1); border-color:var(--ayleid-blue); }
+    .lightbox__controls { position:fixed; bottom:2rem; left:50%; transform:translateX(-50%); z-index:10000; display:flex; gap:0.5rem; }
+    .lightbox__btn { background:rgba(0,0,0,0.6); border:1px solid rgba(106,158,180,0.2); color:var(--ayleid-blue); font-family:var(--font-label); font-size:0.65rem; letter-spacing:0.15em; padding:0.5rem 1.25rem; cursor:pointer; transition:all 0.3s ease; }
+    .lightbox__btn:hover { background:rgba(106,158,180,0.1); border-color:var(--ayleid-blue); }
+    .lightbox__caption { position:fixed; bottom:5rem; left:50%; transform:translateX(-50%); z-index:10000; font-family:var(--font-label); font-size:0.55rem; letter-spacing:0.25em; text-transform:uppercase; color:var(--text-dim); white-space:nowrap; }
+    .lightbox__nav { position:fixed; top:50%; transform:translateY(-50%); z-index:10000; background:rgba(0,0,0,0.4); border:1px solid rgba(106,158,180,0.15); color:var(--ayleid-blue); font-size:1.5rem; padding:0.75rem 1rem; cursor:pointer; transition:all 0.3s ease; line-height:1; }
+    .lightbox__nav:hover { background:rgba(106,158,180,0.1); }
+    .lightbox__nav--prev { left:1rem; }
+    .lightbox__nav--next { right:1rem; }
+
+    /* Hero background */
+    .house-hero--ayleid { position:relative; overflow:hidden; }
+    .house-hero--ayleid::before { content:''; position:absolute; inset:0; background:url('img/abagarlas-interior.jpg') center 40% / cover no-repeat; opacity:0.18; filter:saturate(0.5) brightness(0.4); z-index:0; }
+    .house-hero--ayleid::after { content:''; position:absolute; inset:0; background: radial-gradient(ellipse 80% 60% at 50% 40%, rgba(40,80,110,0.2), transparent 70%), linear-gradient(to top, var(--ayleid-bg) 0%, rgba(6,6,8,0.3) 35%, transparent 60%), linear-gradient(to bottom, var(--ayleid-bg) 0%, rgba(6,6,8,0.5) 20%, transparent 50%); z-index:0; }
+    .house-hero--ayleid .hero-content { position:relative; z-index:1; }
+  </style>
+</head>
+<body>
+  <div class="page-bg"></div>
+    <div class="loader" id="loader">
+    <div class="loader__ornament">⌘ — ◇ — ⌘</div>
+    <div class="loader__brand">Abagarlas</div>
+  </div>
+  <div class="page-wrapper">
+
+    <nav class="nav" id="nav">
+      <a href="/" class="nav-brand">◆ Clan Lar</a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#excavation">Excavation</a></li>
+        <li><a href="#corridor">Corridor</a></li>
+        <li><a href="#hall">Grand Hall</a></li>
+        <li><a href="#ascent">Ascent</a></li>
+        <li><a href="#throne">Throne</a></li>
+        <li><a href="#veil">The Veil</a></li>
+        <li><a href="#forge">Forge</a></li>
+        <li><a href="#download">Download</a></li>
+        <li><a href="#visit">Visit</a></li>
+              <li><a href="news">News</a></li>
+        <li><a href="login">Enter</a></li>
+      </ul>
+      <button class="nav__search" id="searchBtn">⌕ Search</button>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation"><span></span><span></span><span></span></button>
+    </nav>
+
+    <!-- HERO -->
+    <section class="house-hero house-hero--ayleid">
+      <div class="hero-content">
+        <div class="hero-line"><div class="divider-ornate divider-ornate--ayleid"><span class="orn">⌘ &nbsp;◆&nbsp; ◇ &nbsp;◆&nbsp; ◇ &nbsp;◆&nbsp; ⌘</span></div></div>
+        <div class="hero-line"><div class="label accent-deep" style="letter-spacing:0.45em;text-align:center;">The Archives of Clan Lar</div></div>
+        <div class="hero-line"><h1 class="display-title accent" style="text-align:center;">Abagarlas</h1></div>
+        <div class="hero-line">
+          <div class="subtitle" style="text-align:center;">Notes on the Passage Beyond</div>
+          <div style="margin-top:0.75rem;"><div class="divider-line divider-line--ayleid"><span class="orn">◇ Through the Secret Passage, Beyond a Forgotten Gate ◇</span></div></div>
+        </div>
+        <div class="hero-line"><div class="divider-ornate divider-ornate--ayleid"><span class="orn">⌘ &nbsp;◆&nbsp; ◇ &nbsp;◆&nbsp; ◇ &nbsp;◆&nbsp; ⌘</span></div></div>
+      </div>
+    </section>
+
+    <!-- I · THE EXCAVATION -->
+    <section class="chapter" id="excavation">
+      <div class="content-narrow" style="text-align:center;">
+        <div class="fade-in"><div class="divider-ornate divider-ornate--ayleid"><span class="orn">◇ ◆ ◇</span></div>
+        <div class="chapter__number">Chapter I</div>
+        <h2 class="chapter__title">The Excavation</h2>
+        <div class="chapter__subtitle">Black soul gems sit in clusters along the walls — too many, too deliberate — each one giving off a faint pulse. Slow. Steady. Like something breathing in its sleep.</div>
+        <div class="divider-line divider-line--ayleid"><span class="orn">◇ ◆ ◇</span></div></div>
+        <div class="house-prose fade-in" style="text-align:left;">
+          <p><em>I stepped through the gate — and the Bastion vanished. No sound carried through. No warmth followed. Just silence, and the smell of earth that hasn’t been disturbed in a very long time. Someone started digging here once. They stopped. Whether by choice or not, you can’t tell. Black soul gems sit in clusters along the walls — too many, too deliberate — each one giving off a faint pulse. Slow. Steady. Like something breathing in its sleep.</em></p>
+          <p><strong>I gave the order to unseal this passage against the counsel of three of my advisors. Whatever waits down here did not <em>invite</em> us. It simply hasn’t <em>objected</em> yet.</strong></p>
+        </div>
+      </div>
+      <div class="content-wide">
+        <div class="image-gallery image-gallery--2 fade-in">
+          <div class="gallery-item" data-lb="0"><img src="img/abagarlas/excavation-01.png" alt="Crystal formations flanking the descent" loading="lazy"><div class="gallery-item__caption">The descent — soul gems pulse in the silence</div></div>
+          <div class="gallery-item" data-lb="1"><img src="img/abagarlas/excavation-02.png" alt="The sealed gate at the corridor’s end" loading="lazy"><div class="gallery-item__caption">The sealed gate — light beyond the bars</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- II · THE GRAND CORRIDOR -->
+    <section class="chapter" id="corridor">
+      <div class="content-narrow" style="text-align:center;">
+        <div class="fade-in"><div class="divider-ornate divider-ornate--ayleid"><span class="orn">◇ ◆ ◇ ◆ ◇</span></div>
+        <div class="chapter__number">Chapter II</div>
+        <h2 class="chapter__title">The Grand Corridor</h2>
+        <div class="chapter__subtitle">The corridor is Ayleid. There’s no mistaking it — the proportions, the craftsmanship, the weathered white stone that still manages to look deliberate after all these centuries.</div>
+        <div class="divider-line divider-line--ayleid"><span class="orn">◇ ◆ ◇</span></div></div>
+        <div class="house-prose fade-in" style="text-align:left;">
+          <p><em>The corridor is Ayleid. There’s no mistaking it — the proportions, the craftsmanship, the weathered white stone that still manages to look deliberate after all these centuries. Cold flame burns in fixtures alongside ordinary braziers, and the light they throw can’t seem to settle on a single colour. It would almost be beautiful, if not for the floor. Something dark — not stone, not mineral, <strong>nothing I can name</strong> — is pushing up through the Ayleid tile. More of it appears the deeper you go.</em></p>
+          <p><strong>It doesn’t crack the stone. It <em>replaces</em> it. Slowly. Like roots through soil.</strong></p>
+          <p><strong>I’ve gone through every text the Archive holds. <em>Nothing</em> matches this material. It resembles the blackened rock of Coldharbour’s floating islands — the kind covered in blue lichen that drifts in the void between the Shrouded Plain and the Fist of Stone. I know this because I <em>walked</em> on it once. I did not expect to find it again beyond an ancient gate, at the end of a road that should not exist atop my own Bastion.</strong></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- III · THE GRAND HALL -->
+    <section class="chapter" id="hall">
+      <div class="content-narrow" style="text-align:center;">
+        <div class="fade-in"><div class="divider-ornate divider-ornate--ayleid"><span class="orn">◇ ◆ ◇ ◆ ◇</span></div>
+        <div class="chapter__number">Chapter III</div>
+        <h2 class="chapter__title">The Grand Hall</h2>
+        <div class="chapter__subtitle">At the centre — impossible to miss — a soul gem larger than anything that should exist. It doesn’t sit on anything. It hovers.</div>
+        <div class="divider-line divider-line--ayleid"><span class="orn">◇ ◆ ◇</span></div></div>
+        <div class="house-prose fade-in" style="text-align:left;">
+          <p><em>Past the corridor, the ceiling lifts and the space opens into something that was clearly meant to impress. At the centre — impossible to miss — a soul gem larger than anything that should exist. It doesn’t sit on anything. It hovers. Pieces of it orbit slowly, drifting apart and pulling back together as though the thing is trying to hold its own shape. Banners hang from ancient fixtures, colours long faded but still there. Bookshelves line the walls — Ayleid script, dense and old, the kind my scholars squint at for hours and still can’t agree on. And in the walls themselves, halfway buried in the stone — skeletons. Not collapsed. Not fallen. <strong>Put there. On purpose.</strong> Their fingers are still wrapped around soul gems.</em></p>
+          <p><strong>They didn’t choose to hold those. Something made <em>sure</em> they couldn’t let go. I ordered my people not to touch them.</strong></p>
+          <p><em>White grass grows from the cracks. Dark rock pushes through the marble. Pale plants — no sunlight, no soil — growing anyway.</em></p>
+          <p><strong>I’ve stopped pretending this is still part of the Bastion. It isn’t part of <em>Tamriel</em> either. No one enters without my direct permission.</strong></p>
+          <p><em>And if you look past all of it — past the gem, past the shelves, past the dead still clutching their charges — there’s something at the far end. A shape. Vertical. Thin.</em></p>
+          <p><strong>A spire. I wasn’t sure the first time. I am <em>now</em>.</strong></p>
+        </div>
+      </div>
+      <div class="content-wide">
+        <div class="image-gallery image-gallery--2 fade-in">
+          <div class="gallery-item" data-lb="2"><img src="img/abagarlas/hall-01.png" alt="The hovering soul gem" loading="lazy"><div class="gallery-item__caption">The soul gem — orbiting, holding its own shape</div></div>
+          <div class="gallery-item" data-lb="3"><img src="img/abagarlas/hall-02.png" alt="Ayleid shelves and Daedric fixtures" loading="lazy"><div class="gallery-item__caption">Ayleid shelves — script no one can agree on</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- IV · THE ASCENT ◇ -->
+    <section class="chapter" id="ascent">
+      <div class="content-narrow" style="text-align:center;">
+        <div class="fade-in"><div class="divider-ornate divider-ornate--ayleid"><span class="orn">◇ &nbsp;⌘&nbsp; ◆ &nbsp;⌘&nbsp; ◇</span></div>
+        <div class="chapter__number">◇ Chapter IV</div>
+        <h2 class="chapter__title">The Ascent</h2>
+        <div class="chapter__subtitle">Streams of light move through the stone the way blood moves through a body — constant, purposeful, feeding something deeper in.</div>
+        <div class="divider-line divider-line--ayleid"><span class="orn">◇ ◆ ◇</span></div></div>
+        <div class="house-prose fade-in" style="text-align:left;">
+          <p><em>Stairs. Ayleid structures on both sides — pillars, and things that aren’t pillars, mechanisms that do what no one alive could explain. Streams of light move through them without stopping. Not magical light — something thicker. Heavier. Soul fragments, maybe. They move through the stone the way blood moves through a body — constant, purposeful, feeding something deeper in.</em></p>
+          <p><strong>These structures aren’t decorative. They’re <em>functional</em>. The ruins run on whatever flows through them.</strong></p>
+          <p><em>Stand still long enough and you’ll hear it underneath everything else. Whispers. Not one voice — dozens, overlapping, speaking in a tongue that isn’t any language I know. It’s older than that. Older than Aldmeris. Older than anything my scholars have a name for.</em></p>
+          <p><em>The second staircase is harder. <strong>Colder</strong>. The air has weight to it — not humidity, but a pressure from a direction that doesn’t make sense. The Coldharbour contamination is heavier here. And the spire from below is no longer faint.</em></p>
+          <p><strong>Even among our blood, <em>fear</em> is not easily admitted. But I saw it in their eyes on the stairs. A dread with no source and no <em>name</em>. Something above knows when it is being approached. I am <em>certain</em> of it.</strong></p>
+        </div>
+      </div>
+      <div class="cinema-image"><div class="gallery-item fade-in" data-lb="4"><img src="img/abagarlas/ascent-01.png" alt="The grand staircase" loading="lazy"><div class="gallery-item__caption">The ascent — something above knows when it is being approached</div></div></div>
+    </section>
+
+    <!-- V · THE THRONE ◇ -->
+    <section class="chapter" id="throne">
+      <div class="content-narrow" style="text-align:center;">
+        <div class="fade-in"><div class="divider-ornate divider-ornate--ayleid"><span class="orn">◇ &nbsp;⌘&nbsp; ◆ &nbsp;⌘&nbsp; ◇</span></div>
+        <div class="chapter__number">◇ Chapter V</div>
+        <h2 class="chapter__title">The Throne</h2>
+        <div class="chapter__subtitle">It belongs to Molag Bal. We knew the moment we saw it. Empty when we found it — dormant, cold, untouched for what must be an age or more.</div>
+        <div class="divider-line divider-line--ayleid"><span class="orn">◇ ◆ ◇</span></div></div>
+        <div class="house-prose fade-in" style="text-align:left;">
+          <p><em>The stairs end. And there it is — a throne. Ayleid craftsmanship, unmistakable, but no Ayleid ever sat here. The shape of it, the position, the way the entire room bends toward it — this was built for one purpose.</em> <strong>Worship.</strong></p>
+          <p><strong>It belongs to Molag Bal. We knew the moment we saw it. Empty when we found it — dormant, cold, untouched for what must be an age or more. I cannot describe the relief I felt in that moment. I have ruled this clan through war, betrayal, and worse. <em>Nothing</em> has frightened me like the thought of finding that seat occupied.</strong></p>
+          <p><strong>But dormant is not the same as <em>gone</em>. I know this better than most.</strong></p>
+          <p><em>There’s a hum. Low, constant, the kind you feel before you hear it — in your jaw, in your teeth, in the base of your skull. It comes from the throne. Not from around it. <strong>From it</strong>. As though the stone itself is remembering something it was told to forget.</em></p>
+          <p><em>On both sides of the chamber — flanking the throne like honour guards frozen mid-ceremony — they stand. Daedric. Ancient. Enormous. Taller than anything living has a right to be. Their forms are pale, almost white, withered through so many ages the bone — if it is bone — looks brittle. Delicate, even. You’d think a strong wind would bring them down. You’d be wrong. Nothing delicate survives this long. Nothing delicate survives here at all.</em></p>
+          <p><strong>My scholars spent two days examining them. Remains, they said. Calcified. <em>Inert</em>. I listened. I nodded. And then I posted a watch anyway. I did not explain why. On the third night, the watcher came to me. Pale. Shaking — and this was one of <em>ours</em>, not some fledgling mortal. He told me their heads had <em>moved</em>. Not much. Just enough. I doubled the watch. I have not told the others what was reported.</strong></p>
+          <p><em>Their arms are stretched outward — to the sides, curved, forming something close to a circle. Ritual positioning. Too precise, too deliberate to be coincidence. Some of the arms reach forward instead — extended, palms up, as if presenting something. Or pleading for it. In each hand, a soul gem. Seven, perhaps eight total — each one larger than any I’ve seen outside of legend. And from every single one, a steady stream of soul-light pours into the mechanism behind the throne.</em></p>
+          <p><em>The mechanism itself is… difficult. Ayleid in its bones — the geometry, the crystal work, the precision. But corrupted. Coldharbour stone threads through it like veins through flesh. Crystal and dark rock fused so thoroughly you stop trying to tell them apart.</em></p>
+          <p><strong>It was running when we arrived. It is running now. I don’t believe it has <em>ever</em> stopped. The pulse is steady — rhythmic, almost organic. It reminds me of a heartbeat. Or <em>feeding</em>. I’m not sure there’s a difference here.</strong></p>
+        </div>
+      </div>
+      <div class="cinema-image"><div class="gallery-item fade-in" data-lb="5"><img src="img/abagarlas/throne-01.png" alt="The throne of Molag Bal" loading="lazy"><div class="gallery-item__caption">The throne — where worship and annihilation meet</div></div></div>
+    </section>
+
+    <!-- VI · BEYOND THE VEIL ◇ -->
+    <section class="chapter" id="veil">
+      <div class="content-narrow" style="text-align:center;">
+        <div class="fade-in"><div class="divider-ornate divider-ornate--ayleid"><span class="orn">◇ &nbsp;⌘&nbsp; ◆ &nbsp;⌘&nbsp; ◇</span></div>
+        <div class="chapter__number">◇ Chapter VI</div>
+        <h2 class="chapter__title">Beyond the Veil</h2>
+        <div class="chapter__subtitle">The veil does not thin at the summit. It is not weak. It is not fraying. It is <em>gone</em>.</div>
+        <div class="divider-line divider-line--ayleid"><span class="orn">◇ ◆ ◇</span></div></div>
+        <div class="house-prose fade-in" style="text-align:left;">
+          <p><em>This is where the ruin stops pretending. The walls — what’s left of them — give way entirely. Stone separates from stone, pieces lifting free and drifting outward into open dark. Not falling. Not collapsing. Floating. Suspended in nothing, going nowhere, perfectly still.</em></p>
+          <p><strong>I need to be precise here, because what I am about to write will sound like madness to anyone who has not stood where I have stood. The veil does not thin at the summit. It is not weak. It is not fraying. It is <em>gone</em>. What lies beyond is Coldharbour itself — the gray haze, the perpetual cold that no enchantment can soften, the sky that burns without warmth. Not a glimpse. Not a tear. The realm — open, <em>present</em>, close enough that I can smell the air shifting between rot and something sickeningly sweet, exactly as I remember it. The only thing between us and it is the wall of souls. I do not know how long it will hold. I do not know if it is <em>meant</em> to.</strong></p>
+          <p><strong>I have been to Coldharbour before. Lyris Titanborn broke me out of the Wailing Prison. She freed the Prophet by taking his place — walked into that cell knowing what it meant. The Prophet and I escaped. She did <em>not</em>. I was a simple vampire when the Worm Cult took me. Mannimarco’s people didn’t choose me for any grand reason. I was <em>convenient</em>. They sacrificed me and I woke in Coldharbour with nothing. My soul was gone — ripped out and locked in a gem somewhere in Bal’s collection. What was left of me was held together by a Daedric animus and chaotic creatia. Azure Plasm. The same substance that forms every lesser Daedra in that realm. That was my body now. An <em>imitation</em>, built from Oblivion-matter in the shape of what I used to be. Everything that came after — the Harborage, the Companions, the war against the Anchors — none of it was supposed to happen to someone like me. But it did. I fought through the Shrouded Plain. I stood before the Endless Stair. I watched the Planar Vortex collapse. I <em>never</em> expected to stand at the edge of that realm again — and certainly not from a passage beyond my own library.</strong></p>
+          <p><em>Fragments of the ruin hang in the void — Ayleid stone, broken archways, pieces of floor — suspended in the darkness of Oblivion. Below them, if there is a below, the faint shimmer of Azure Plasm — that brackish, impossibly cold creatia that pools across Coldharbour like dead water. They don’t drift. They don’t decay. They just… remain.</em></p>
+          <p><em>And behind it all — behind the mechanism, behind the throne, behind everything you thought was the end of this place — the wall of souls parts. A shimmering, restless barrier of captured light. And beyond it —</em></p>
+        </div>
+      </div>
+      <div class="cinema-image"><div class="gallery-item fade-in" data-lb="6"><img src="img/abagarlas/veil-01.png" alt="Beyond the veil" loading="lazy"><div class="gallery-item__caption">Beyond the veil — Coldharbour, open and present</div></div></div>
+      <div class="content-narrow">
+        <div class="chapter__lore fade-in">
+          <strong>Abagarlas.</strong><br><br>
+          <em>A spire. Rising out of the void. Alone. The rest of the city is gone — consumed when Molag Bal dragged it into Coldharbour in an age so distant it barely survives in written record. But the spire remains. One structure. Still standing in the dark, preserved by the Prince who destroyed everything around it.</em><br><br>
+          <strong>I know this city. Not from texts — from Coldharbour <em>itself</em>. Abagarlas worshipped Molag Bal in the days of the Ayleids. He gifted them the Mortuum Vivicus — a weapon that drank the lives of their enemies. When the city of Delodiil struck first, Bal dragged what remained of Abagarlas into Coldharbour. The Vivicus was taken to the Halls of Submission. The city itself was consumed. Or so we <em>believed</em>.</strong><br><br>
+          <strong>The spire survived. Standing alone in the void, preserved by the Prince who swallowed everything else around it. I have asked myself why. A trophy. A monument to a city that served him <em>faithfully</em> and was rewarded with annihilation. Or perhaps something crueler — a reminder to every soul in Coldharbour of what devotion to Molag Bal ultimately <em>earns</em> you.</strong><br><br>
+          <strong>It stands there still — reaching upward into a void with no sky, no stars, no end. Defiant, perhaps. Or perhaps just <em>forgotten</em>.</strong>
+        </div>
+      </div>
+    </section>
+
+    <!-- VII · THE FORGE -->
+    <section class="chapter" id="forge">
+      <div class="content-narrow" style="text-align:center;">
+        <div class="fade-in"><div class="divider-ornate divider-ornate--ayleid"><span class="orn">◇ ◆ ◇ ◆ ◇</span></div>
+        <div class="chapter__number">Chapter VII</div>
+        <h2 class="chapter__title">The Forge</h2>
+        <div class="chapter__subtitle">A light that doesn’t belong here. A light that shouldn’t be possible this deep in a place this dark.</div>
+        <div class="divider-line divider-line--ayleid"><span class="orn">◇ ◆ ◇</span></div></div>
+        <div class="house-prose fade-in" style="text-align:left;">
+          <p><em>Turn right. Away from the throne, away from the veil, away from the void and the spire and all of it. There’s a passage most people walk right past — understandable, given what commands attention in that chamber. But take it. A few steps in, and something changes. The cold lifts. The pressure eases. The hum from the throne fades to nothing.</em></p>
+          <p><em>An Ayleid forge. Old — older than anything else in these ruins, and that is saying something. It sits in a small chamber, untouched. Not damaged. Not corrupted. Not even dusty. Everything else in this place has been claimed, broken, or twisted by Coldharbour. <strong>Not this</strong>. Whatever this forge is, whatever protects it, Coldharbour couldn’t reach it.</em></p>
+          <p><em>And it glows. Not with soul fire. Not with cold flame. With something else entirely — warm, clean, steady. A light that doesn’t belong here. A light that shouldn’t be possible this deep in a place this dark.</em></p>
+          <p><strong><em>Aetherius</em>. I had one of my scholars confirm it twice. She refused to believe her own readings. The light of the <em>Divines</em> — here, in a ruin soaked in Daedric corruption, at the summit of a place built for Molag Bal. Burning quietly as though it has <em>always</em> been here. As though nothing that happened around it matters. When Mannimarco sacrificed me, I was no one. Not ancient. Not powerful. Not <em>chosen</em>. But I carried the blessing of the Eight when I faced Molag Bal at Heart’s Grief. I know what Aetherius feels like. This forge burns with the same light. Smaller. Quieter. But the <em>same</em>. And it has been burning here since long before I was born, long before the Planemeld, long before Abagarlas fell.</strong></p>
+          <p><em>The creatures in the throne room won’t face this chamber. I’ve observed it. Their gaze shifts between the mechanism and the entrance — but <strong>never</strong> here. The Coldharbour stone stops at the threshold. The veil, shattered everywhere else, holds firm around this room. Whatever guards this place drew a line a very long time ago, and nothing — not a Daedric Prince, not millennia of corruption, not the collapse of the veil itself — has been able to cross it.</em></p>
+          <p><strong>I have no explanation. I have theories, none of them satisfying. I have seen what Meridia’s light can do inside Coldharbour — the Hollow City stood untouched in the heart of Bal’s realm for ages. This feels <em>similar</em>. Perhaps older. Perhaps something else entirely. This forge should not exist. And yet it is the most <em>real</em> thing in these ruins — the only thing that feels like it belongs to our world. Or to something <em>above</em> it.</strong></p>
+          <p><strong>I have decided not to investigate further. What I found in these ruins unsettles me more than anything in that realm ever did. Some doors are better left closed. I did not learn that gently.</strong></p>
+        </div>
+      </div>
+      <div class="cinema-image"><div class="gallery-item fade-in" data-lb="7"><img src="img/abagarlas/forge-01.png" alt="The Ayleid forge" loading="lazy"><div class="gallery-item__caption">The forge — light of the Divines, burning since before the fall</div></div></div>
+    </section>
+
+    <!-- ◎ ARCHIVAL SEAL -->
+    <section class="chapter" id="seal">
+      <div class="content-narrow" style="text-align:center;">
+        <div class="fade-in"><div class="divider-ornate divider-ornate--ayleid"><span class="orn">◎ &nbsp;◆&nbsp; ◇ &nbsp;◆&nbsp; ◎</span></div>
+        <div class="chapter__number">◎ Archival Seal</div>
+        <h2 class="chapter__title" style="font-size:clamp(1.1rem,2.5vw,1.6rem);">Sealed · Warded · Preserved</h2>
+        <div class="divider-line divider-line--ayleid"><span class="orn">◎ ◆ ◎</span></div></div>
+      </div>
+      <div class="cinema-image"><div class="gallery-item fade-in" data-lb="8"><img src="img/abagarlas/seal-01.jpg" alt="The ruins beyond" loading="lazy" style="object-position:center 40%;"><div class="gallery-item__caption">Beyond the archive — where world and ruin meet</div></div></div>
+      <div class="content-narrow">
+        <div class="seal-section fade-in">
+          <div class="house-prose" style="text-align:left;max-width:600px;margin:0 auto;">
+            <p><strong>These pages will remain in the Archive. Sealed. Warded.</strong> <em>Not because what lies beyond the passage is dangerous — it is,</em> <strong><em>profoundly</em></strong> <em>so — but because what it offers is worse than danger. Knowledge. Understanding.</em> <strong><em>Transformation</em></strong><em>. I went looking for all three. I found them. What that cost me is not something I will commit to paper.</em></p>
+            <p><strong>The Worm Cult took me when I was still no one. Mannimarco sacrificed me on an altar I <em>never</em> saw coming. Molag Bal claimed my soul. I walked his realm as a Shriven — hollow, lost, <em>less</em> than what I was. Lyris and the Prophet pulled me out. The Eight gave me the power to face Bal himself. I earned my soul back. I thought that was the worst thing this world would ever ask of me. I was <em>wrong</em>. What lies beyond the gate is worse — not because it takes something from you, but because it makes you <em>want</em> to give it freely.</strong></p>
+            <p><strong>If you are reading this, then I have either placed these pages in your hands myself, or I have moved beyond the need for such decisions.</strong></p>
+            <p><strong>What I was before that passage is in these pages. What I became after is <em>not</em>. There is no script — Ayleid, Daedric, or otherwise — that holds what I have become.</strong></p>
+          </div>
+          <div style="margin-top:2rem;">
+            <div class="label" style="color:var(--ayleid-deep);letter-spacing:0.5em;">◎ S E A L E D ◎</div>
+            <div style="margin-top:1rem; font-family:var(--font-mono); font-size:0.6rem; color:var(--text-faint); letter-spacing:0.1em;">██th Sun’s ░░░░, 2E ███ — or so I believe. Time holds little meaning where I have been.</div>
+            <div style="margin-top:0.5rem; font-family:var(--font-body); font-style:italic; font-size:0.85rem; color:var(--ayleid-deep);">— Va̷l̷y̷r̷ia, of the ruling blood of Clan Lar</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DOWNLOAD -->
+    <section class="chapter" id="download">
+      <div class="content-narrow" style="text-align:center;">
+        <div class="fade-in"><div class="divider-ornate divider-ornate--ayleid"><span class="orn">⌘ ◇ ◆ ◇ ⌘</span></div>
+        <div class="chapter__number">The Full Record</div>
+        <h2 class="chapter__title" style="font-size:clamp(1.2rem,2.5vw,1.6rem);">Download the Archive</h2>
+        <div class="divider-line divider-line--ayleid"><span class="orn">◇ ◆ ◇</span></div></div>
+        <div class="download-card fade-in">
+          <div class="download-card__version">Archive Draft v1.2</div>
+          <div class="download-card__desc">The complete written record of the passage beyond — from the Excavation to the Archival Seal. Covering the sealed chambers, the soul gem hall, the throne room, the veil into Coldharbour, and the forge that burns with light from somewhere it shouldn’t.</div>
+          <div>
+            <a href="downloads/abagarlas-v1.2.pdf" class="download-btn" download>PDF</a>
+            <a href="downloads/abagarlas-v1.2.md" class="download-btn" download>Markdown</a>
+            <a href="downloads/abagarlas-v1.2.txt" class="download-btn" download>Plain Text</a>
+          </div>
+          <div class="download-card__meta">Illustrated · Last updated February 2026</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- VISIT CARD -->
+    <section class="chapter" id="visit">
+      <div class="content-narrow" style="text-align:center;">
+        <div class="fade-in"><div class="divider-ornate divider-ornate--ayleid"><span class="orn">⌘ ◆ ◇ ◆ ⌘</span></div></div>
+        <div class="visit-card fade-in" style="border-color:rgba(90,138,158,0.15);text-align:left;">
+          <div style="text-align:center;margin-bottom:2rem;">
+            <div class="label accent-deep" style="margin-bottom:0.5rem;">The Archives of Clan Lar</div>
+            <div style="font-family:var(--font-display);font-size:1.3rem;letter-spacing:0.2em;text-transform:uppercase;" class="accent">Abagarlas</div>
+            <div class="subtitle" style="font-size:1rem;">Notes on the Passage Beyond</div>
+          </div>
+          <div class="visit-card__row"><div class="visit-card__label">User ID</div><div class="visit-card__value">@Vaelarn</div></div>
+          <div class="visit-card__row"><div class="visit-card__label">Server</div><div class="visit-card__value">PC — EU</div></div>
+          <div class="visit-card__row"><div class="visit-card__label">House</div><div class="visit-card__value">Coldharbour Surreal Estate</div></div>
+          <div class="visit-card__row"><div class="visit-card__label">Title</div><div class="visit-card__value visit-card__value--accent accent">Ayleid Ruins of Bal</div></div>
+          <div class="visit-card__row"><div class="visit-card__label">Status</div><div class="visit-card__value">Public</div></div>
+          <div class="visit-card__port">
+            <div class="visit-card__port-label">Port</div>
+            <div class="visit-card__port-code" onclick="copyPort(this)" data-port='/script JumpToSpecificHouse("@Vaelarn", 47)'>/script JumpToSpecificHouse("@Vaelarn", 47)<span class="copy-hint">Click to copy</span></div>
+          </div>
+        </div>
+        <div class="fade-in" style="text-align:center;margin-top:2.5rem;width:100%;">
+          <p class="accent" style="font-style:italic;font-size:1.1rem;">The passage beyond awaits those bold enough to seek it.</p>
+          <div class="divider-line divider-line--ayleid"><span class="orn">◇ ◆ ◇</span></div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer" style="border-top-color:rgba(90,138,158,0.1);">
+      <div class="footer-signature accent-deep">— Valyria, of the ruling blood of Clan Lar</div>
+      <div class="footer-meta">@Vaelarn · PC — EU</div>
+    </footer>
+  </div>
+
+  <!-- FULLSCREEN LIGHTBOX -->
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox__close" id="lbClose">✕ Close</button>
+    <button class="lightbox__nav lightbox__nav--prev" id="lbPrev">‹</button>
+    <button class="lightbox__nav lightbox__nav--next" id="lbNext">›</button>
+    <img class="lightbox__img" id="lbImg" src="" alt="" draggable="false">
+    <div class="lightbox__counter" id="lbCounter"></div>
+    <div class="lightbox__caption" id="lbCaption"></div>
+    <div class="lightbox__controls">
+      <button class="lightbox__btn" id="lbZoomIn">+ Zoom</button>
+      <button class="lightbox__btn" id="lbZoomOut">− Zoom</button>
+      <button class="lightbox__btn" id="lbReset">⟲ Reset</button>
+    </div>
+  
+  <button class="reader-toggle" id="readerToggle" aria-pressed="false">◇ Read</button>
+  <div class="search-overlay" id="searchOverlay">
+    <div class="search__box">
+      <input type="text" class="search__input" placeholder="Search houses, lore, archives… (Ctrl+K)">
+      <div class="search__results"></div>
+    </div>
+  </div>
+  </div>
+
+  <script src="js/main.js"></script>
+  <script>initLightbox();</script>
+</body>
+</html>

@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Houses of Clan Lar — @Vaelarn · PC–EU</title>
+  <meta name="description" content="ESO Housing portfolio by Andrey Kuznetsov (@Vaelarn). Four houses, each with its own history. Bastion Sanguinaris, Abagarlas, Creature-From-Beyond, and New-Sheoth Palace.">
+  <meta property="og:title" content="The Houses of Clan Lar — @Vaelarn">
+  <meta property="og:description" content="ESO Housing portfolio. Bastion Sanguinaris, Abagarlas, Creature-From-Beyond, and New-Sheoth Palace. PC‑EU.">
+  <meta property="og:image" content="img/crows-wood.jpg">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#060608">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=IBM+Plex+Mono:wght@300;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>◆</text></svg>">
+  <style>
+    :root { --house-accent: rgba(160,160,170,0.4); }
+    /* ===== EXTENDED HERO ===== */
+    .hero--landing { position:relative; background:var(--bg-void); overflow:hidden; }
+    .hero--landing::before { content:''; position:absolute; inset:0; background:url('img/crows-wood.jpg') center center / cover no-repeat; opacity:0.2; filter:saturate(0.4) brightness(0.5); z-index:0; }
+    .hero--landing::after { content:''; position:absolute; inset:0; background: radial-gradient(ellipse 70% 40% at 50% 20%, rgba(40,25,50,0.5), transparent), linear-gradient(to top, var(--bg-void) 0%, transparent 50%), linear-gradient(to bottom, rgba(6,6,8,0.7) 0%, transparent 30%); z-index:0; }
+    .hero--landing .hero-content { position:relative; z-index:1; }
+    .hero__identity { font-family:var(--font-label); font-size:clamp(0.8rem,1.5vw,1rem); letter-spacing:0.5em; color:var(--text-secondary); margin-top:1.25rem; text-transform:uppercase; }
+    .hero__bio { max-width:600px; margin:3rem auto 0; }
+    .hero__bio p { font-style:italic; color:var(--text-secondary); font-size:1.05rem; line-height:1.9; }
+    .hero__houses-intro { position:relative; z-index:1; padding:4rem 2rem 5rem; text-align:center; }
+    .hero-line { opacity:0; transform:translateY(15px); animation:heroReveal 0.9s ease forwards; }
+    .hero-line:nth-child(1) { animation-delay:0.2s; }
+    .hero-line:nth-child(2) { animation-delay:0.5s; }
+    .hero-line:nth-child(3) { animation-delay:0.7s; }
+    .hero-line:nth-child(4) { animation-delay:0.9s; }
+    .hero-line:nth-child(5) { animation-delay:1.1s; }
+    .hero-line:nth-child(6) { animation-delay:1.3s; }
+    @keyframes heroReveal { to { opacity:1; transform:translateY(0); } }
+
+    /* ===== SHOWCASE PANELS ===== */
+    .showcase { padding:4rem 0; position:relative; overflow:hidden; }
+    .showcase + .showcase { border-top:1px solid rgba(255,255,255,0.02); }
+    .showcase__inner { display:grid; grid-template-columns:1fr 1fr; gap:0; max-width:var(--wide-width); margin:0 auto; min-height:420px; align-items:stretch; }
+    .showcase__image { position:relative; overflow:hidden; }
+    .showcase__image img { width:100%; height:100%; object-fit:cover; display:block; filter:brightness(0.65) saturate(0.8); transition:filter 0.6s ease; }
+    .showcase:hover .showcase__image img { filter:brightness(0.8) saturate(0.9); }
+    .showcase__image::after { content:''; position:absolute; inset:0; }
+    .showcase__content { display:flex; flex-direction:column; justify-content:center; padding:3rem 3rem 3rem 2.5rem; position:relative; z-index:1; }
+    .showcase__overline { font-family:var(--font-label); font-size:0.6rem; letter-spacing:0.4em; text-transform:uppercase; color:var(--text-dim); margin-bottom:0.75rem; }
+    .showcase__title { font-family:var(--font-display); font-size:clamp(1.5rem,3vw,2.2rem); letter-spacing:0.2em; text-transform:uppercase; margin-bottom:0.5rem; }
+    .showcase__subtitle { font-family:var(--font-body); font-style:italic; font-size:1.1rem; margin-bottom:0.5rem; }
+    .showcase__tagline { font-family:var(--font-body); font-style:italic; font-size:0.9rem; margin-bottom:1.5rem; }
+    .showcase__desc { font-family:var(--font-body); font-size:1rem; color:var(--text-secondary); line-height:1.85; margin-bottom:1.5rem; }
+    .showcase__status { display:inline-block; font-family:var(--font-label); font-size:0.6rem; letter-spacing:0.25em; text-transform:uppercase; color:var(--text-dim); padding:0.4em 1.2em; border:1px solid var(--border-card); }
+    .showcase__link { display:inline-block; font-family:var(--font-label); font-size:0.6rem; letter-spacing:0.3em; text-transform:uppercase; padding:0.6em 2em; border:1px solid; transition:all 0.4s ease; text-decoration:none; margin-top:0.75rem; }
+    .showcase__link:hover { transform:translateY(-1px); }
+
+    .showcase--crimson { background:linear-gradient(135deg, rgba(26,10,14,0.6), var(--bg-void)); }
+    .showcase--crimson .showcase__image::after { background:linear-gradient(to right, transparent 50%, rgba(26,10,14,0.95)); }
+    .showcase--crimson .showcase__title { color:var(--crimson); }
+    .showcase--crimson .showcase__subtitle { color:var(--crimson-deep); }
+    .showcase--crimson .showcase__tagline { color:var(--crimson-deep); }
+    .showcase--crimson .showcase__link { color:var(--crimson); border-color:rgba(224,96,122,0.3); }
+    .showcase--crimson .showcase__link:hover { background:rgba(224,96,122,0.08); border-color:var(--crimson); }
+
+    .showcase--ayleid { background:linear-gradient(135deg, rgba(8,14,20,0.6), var(--bg-void)); }
+    .showcase--ayleid .showcase__image::after { background:linear-gradient(to right, transparent 50%, rgba(8,14,20,0.95)); }
+    .showcase--ayleid .showcase__title { color:var(--ayleid-blue); }
+    .showcase--ayleid .showcase__subtitle { color:var(--ayleid-deep); }
+    .showcase--ayleid .showcase__tagline { color:var(--ayleid-deep); }
+    .showcase--ayleid .showcase__link { color:var(--ayleid-blue); border-color:rgba(106,158,180,0.3); }
+    .showcase--ayleid .showcase__link:hover { background:rgba(106,158,180,0.08); border-color:var(--ayleid-blue); }
+
+    .showcase--wyrd { background:linear-gradient(135deg, rgba(10,16,10,0.6), var(--bg-void)); }
+    .showcase--wyrd .showcase__image::after { background:linear-gradient(to right, transparent 50%, rgba(10,16,10,0.95)); }
+    .showcase--wyrd .showcase__title { color:var(--wyrd-green); }
+    .showcase--wyrd .showcase__subtitle { color:var(--wyrd-deep); }
+    .showcase--wyrd .showcase__tagline { color:var(--wyrd-deep); }
+    .showcase--wyrd .showcase__link { color:var(--wyrd-green); border-color:rgba(122,180,122,0.3); }
+    .showcase--wyrd .showcase__link:hover { background:rgba(122,180,122,0.08); border-color:var(--wyrd-green); }
+
+    /* ===== LOWER REALM — cold stone (Eastmarch) ===== */
+    .sheoth-realm { position:relative; background:#08090b; }
+    .sheoth-realm__bg { position:absolute; inset:0; overflow:hidden; z-index:0; }
+    .sheoth-realm__bg img { width:100%; height:100%; object-fit:cover; object-position:center 40%; opacity:0.12; filter:saturate(0.3) brightness(0.4); }
+    .sheoth-realm__bg::after { content:''; position:absolute; inset:0; background: linear-gradient(to bottom, var(--bg-void) 0%, rgba(8,9,11,0.65) 20%, rgba(8,9,11,0.35) 50%, rgba(8,9,11,0.6) 85%, #08090b 100%), radial-gradient(ellipse 70% 40% at 50% 40%, rgba(140,160,180,0.03), transparent); }
+    .sheoth-realm > *:not(.sheoth-realm__bg) { position:relative; z-index:1; }
+
+    /* Panel banner — fades from void above into realm */
+    .sheoth-panel { position:relative; overflow:hidden; }
+    .sheoth-panel img { width:100%; display:block; }
+    .sheoth-panel::before { content:''; position:absolute; inset:0; z-index:1; background:linear-gradient(to bottom, var(--bg-void) 0%, transparent 25%); pointer-events:none; }
+
+    /* Cold steel accents */
+    .sheoth-realm .section-title { color:#8a9aaa; }
+    .sheoth-realm .craft-item__title { color:#8a9aaa; border-bottom-color:rgba(140,160,180,0.12); }
+    .sheoth-realm .craft-item em { color:#a0b4c4; }
+    .sheoth-realm .craft-item p { color:var(--text-secondary); }
+    .sheoth-realm .divider { color:#5a6a78; }
+    .sheoth-realm .divider::before, .sheoth-realm .divider::after { background:linear-gradient(90deg, transparent, #5a6a78, transparent); }
+    .sheoth-realm .tagline { color:var(--text-dim); }
+    .sheoth-realm .archive-item { border-color:rgba(140,160,180,0.06); }
+    .sheoth-realm .archive-item:hover { border-color:rgba(140,160,180,0.18); background:rgba(140,160,180,0.02); }
+    .sheoth-realm .footer { border-top-color:rgba(140,160,180,0.06); }
+    .sheoth-realm .footer-signature { color:#5a6a78; }
+    .sheoth-realm .showcase__status { border-color:rgba(140,160,180,0.12); }
+
+    .closing-quote { text-align:center; padding:5rem 2rem; }
+    .closing-quote p { font-family:var(--font-body); font-style:italic; font-size:1.15rem; color:var(--text-dim); max-width:500px; margin:0 auto; line-height:1.8; }
+
+    /* ===== CENTERING ===== */
+    .divider-line,.divider-ornate,.divider { display:flex!important; align-items:center!important; justify-content:center!important; text-align:center!important; width:100%!important; }
+    .fade-in { width:100%!important; }
+
+    
+    /* Per-section selection colors */
+    .showcase--crimson ::selection { background: rgba(184,68,90,0.4); color: #ffd4dc; }
+    .showcase--crimson ::-moz-selection { background: rgba(184,68,90,0.4); color: #ffd4dc; }
+    .showcase--ayleid ::selection { background: rgba(76,128,150,0.4); color: #d4eef8; }
+    .showcase--ayleid ::-moz-selection { background: rgba(76,128,150,0.4); color: #d4eef8; }
+    .showcase--wyrd ::selection { background: rgba(74,138,74,0.4); color: #d4f4d4; }
+    .showcase--wyrd ::-moz-selection { background: rgba(74,138,74,0.4); color: #d4f4d4; }
+    .sheoth-realm ::selection { background: rgba(100,120,140,0.4); color: #d4dce4; }
+    .sheoth-realm ::-moz-selection { background: rgba(100,120,140,0.4); color: #d4dce4; }
+
+    /* ===== RESPONSIVE ===== */
+    @media(max-width:900px) {
+      .showcase__inner { grid-template-columns:1fr; }
+      .showcase__image { height:280px; }
+      .showcase__image::after { background:linear-gradient(to bottom, transparent 40%, var(--bg-void))!important; }
+      .showcase__content { padding:2rem 1.5rem; }
+    }
+    @media(max-width:640px) {
+      .hero__identity { font-size:0.75rem; letter-spacing:0.35em; }
+    }
+  </style>
+</head>
+<body>
+    <!-- LOADER -->
+  <div class="loader" id="loader">
+    <div class="loader__ornament">◆ — ◇ — ◆</div>
+    <div class="loader__brand">Clan Lar</div>
+  </div>
+
+  <div class="page-wrapper">
+
+    <nav class="nav" id="nav">
+      <a href="/" class="nav-brand">◆ Clan Lar</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation"><span></span><span></span><span></span></button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#houses">Houses</a></li>
+        <li><a href="#craft">The Craft</a></li>
+        <li><a href="#archive">Archive</a></li>
+              <li><a href="news">News</a></li>
+        <li><a href="login">Enter</a></li>
+      </ul>
+      <button class="nav__search" id="searchBtn">⌕ Search</button>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero hero--landing" id="houses">
+      <div class="hero-content" style="min-height:85vh; display:flex; flex-direction:column; align-items:center; justify-content:center;">
+        <div class="hero-line">
+          <div class="divider divider--wide"><span>◆ — — — — — ◇ — — — — — ◆ — — — — — ◇ — — — — — ◆</span></div>
+        </div>
+        <div class="hero-line">
+          <div class="label" style="letter-spacing:0.5em;">Worldbuilder · Designer · Storyteller</div>
+        </div>
+        <div class="hero-line">
+          <h1 class="display-title">Andrey Kuznetsov</h1>
+        </div>
+        <div class="hero-line">
+          <div class="hero__identity">@Vaelarn · PC — EU</div>
+        </div>
+        <div class="hero-line">
+          <div class="hero__bio">
+            <div class="divider" style="padding-top:2rem;"><span>◇ — — ◆ — — ◇</span></div>
+            <p>Audio engineer and coder by day. Worldbuilder by night.</p>
+            <p>Rebuilding houses others would call finished. Again and again, until they feel right.</p>
+            <p style="margin-top:1.5rem; color:var(--text-dim);">If a space doesn’t tell you the story of who lived there and what it was for, it’s not finished.</p>
+          </div>
+        </div>
+        <div class="hero-line">
+          <div class="divider divider--wide" style="padding-top:2rem;"><span>◆ — — — — — ◇ — — — — — ◆ — — — — — ◇ — — — — — ◆</span></div>
+        </div>
+      </div>
+
+      <div class="hero__houses-intro">
+        <div class="fade-in">
+          <div class="label">The Houses of Clan Lar</div>
+          <div class="divider"><span>◇ — — ◆ — — ◇</span></div>
+          <p class="tagline" style="max-width:520px; margin:0 auto;">All three houses are open on PC‑EU. They’re not showrooms — they’re places with histories.<br>Every build starts with the same question: <em>who lives here, and what happened to them?</em></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- BASTION -->
+    <section class="showcase showcase--crimson fade-in">
+      <div class="showcase__inner">
+        <div class="showcase__image">
+          <img src="img/bastion-bg.png" alt="Bastion Sanguinaris" loading="lazy">
+        </div>
+        <div class="showcase__content">
+          <div class="showcase__overline">Bastion Sanguinaris</div>
+          <div class="divider divider--crimson" style="padding:0.75rem 0;"><span>✠ — — ◆ — — ✠</span></div>
+          <h2 class="showcase__title">The Crimson Bastion</h2>
+          <div class="showcase__subtitle">A Vampire Stronghold in Blackreach</div>
+          <div class="showcase__tagline">◆ Risen From Ruin and Memory ◆</div>
+          <p class="showcase__desc">Vampire stronghold in Blackreach. Silk banners, undying flame, and a feast hall that hasn’t emptied since the fortress was built. The Scarlet Archive contains books that don’t want to be read. In the library chimney, there’s a passage — but the residents don’t discuss it, and you didn’t hear about it here.</p>
+          <div class="showcase__status">Walkthrough · Single Page</div>
+          <a href="bastion" class="showcase__link">Enter the Bastion →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABAGARLAS -->
+    <section class="showcase showcase--ayleid fade-in">
+      <div class="showcase__inner">
+        <div class="showcase__image">
+          <img src="img/abagarlas-interior.jpg" alt="Abagarlas" loading="lazy">
+        </div>
+        <div class="showcase__content">
+          <div class="showcase__overline">Coldharbour Surreal Estate</div>
+          <div class="divider divider--ayleid" style="padding:0.75rem 0;"><span>⌘ — — ◇ — — ⌘</span></div>
+          <h2 class="showcase__title">Abagarlas</h2>
+          <div class="showcase__subtitle">Notes on the Passage Beyond</div>
+          <div class="showcase__tagline">◇ Through the Secret Passage, Beyond a Forgotten Gate ◇</div>
+          <p class="showcase__desc">Ayleid ruin above the Bastion, reached through a chimney passage in the library and a forgotten road cut through stone that predates the clan by ages. Black soul gems pulse in the corridors like something breathing in its sleep. There’s a throne at the top that was built for worship — empty when we found it, still humming. The veil into Coldharbour is open. Not torn. Not fraying. <em>Open.</em> And at the very end, a forge running on Aetherial light in a place where no such light should be possible.</p>
+          <div class="showcase__status">21 pages · Illustrated · PDF available</div>
+          <a href="abagarlas" class="showcase__link">Read the Archive →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CREATURE-FROM-BEYOND -->
+    <section class="showcase showcase--wyrd fade-in">
+      <div class="showcase__inner">
+        <div class="showcase__image">
+          <img src="img/creature-bg.webp" alt="Creature-From-Beyond" loading="lazy" style="object-position:center 25%;">
+        </div>
+        <div class="showcase__content">
+          <div class="showcase__overline">Sword-Singer Redoubt</div>
+          <div class="divider divider--wyrd" style="padding:0.75rem 0;"><span>❧ — — ◆ — — ❧</span></div>
+          <h2 class="showcase__title">Creature-From-Beyond</h2>
+          <div class="showcase__subtitle">Where the line between world and void grows thin</div>
+          <div class="showcase__tagline">◆ The house is open. The lore isn’t ready yet. ◆</div>
+          <p class="showcase__desc">This one got built before the story did. The house is open, you can walk through it, but the written record hasn’t caught up yet. What’s in there doesn’t wait for lore to be ready. It just <em>is</em>.</p>
+          <div class="showcase__status">Coming soon</div>
+          <a href="creature" class="showcase__link">Visit the House →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- NEW SHEOTH REALM -->
+    <div class="sheoth-realm">
+      <div class="sheoth-realm__bg"><img src="img/eastmarch-bg.jpg" alt="" loading="lazy"></div>
+
+      <div class="sheoth-panel">
+        <img src="img/newsheoth-panel.png" alt="New Sheoth Palace — before the Greymarch" loading="lazy">
+      </div>
+
+      <section id="craft">
+        <div class="content-wide">
+          <div class="fade-in" style="text-align:center;">
+            <div class="divider divider--wide"><span>◆ — — — ◇ — — — ◆ — — — ◇ — — — ◆</span></div>
+            <h2 class="section-title">The Craft Behind the Stone</h2>
+            <div class="divider"><span>◇ — — ◆ — — ◇</span></div>
+          </div>
+          <div class="craft-grid">
+            <div class="craft-item fade-in fade-in-delay-1">
+              <h3 class="craft-item__title">Environmental Storytelling</h3>
+              <p>A room should tell you something before you read a single note. The way light falls, what’s left on a table, how a corridor narrows the deeper you go. <em>If the space doesn’t speak on its own, it’s not done yet.</em></p>
+            </div>
+            <div class="craft-item fade-in fade-in-delay-2">
+              <h3 class="craft-item__title">Structural Intent</h3>
+              <p>No wall is decorative. No furnishing is filler. If a room exists, it exists for a reason — and <em>if that reason isn’t clear, the room gets torn down and rebuilt until it is.</em></p>
+            </div>
+            <div class="craft-item fade-in fade-in-delay-3">
+              <h3 class="craft-item__title">Long-Form Builder</h3>
+              <p>These aren’t weekend projects. Some builds take months. The lore grows alongside the structure, and sometimes the story changes the floor plan halfway through. <em>That’s part of the process.</em></p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="archive">
+        <div class="content-wide">
+          <div class="fade-in" style="text-align:center;">
+            <div class="divider divider--wide"><span>◆ — — — ◇ — — — ◆ — — — ◇ — — — ◆</span></div>
+            <h2 class="section-title">Visit the Archive</h2>
+            <div class="divider"><span>◇ — — ◆ — — ◇</span></div>
+            <p class="tagline" style="max-width:520px; margin:0 auto;">Each house comes with its own written history — lore documents built alongside the house itself, from the first wall to the last detail. Illustrated, themed, and available as PDFs.</p>
+          </div>
+          <div class="archive-grid">
+            <a href="bastion" class="archive-item fade-in">
+              <div class="archive-item__house archive-item__house--crimson">The Crimson Bastion</div>
+              <div class="archive-item__title">Bastion Sanguinaris Walkthrough</div>
+              <div class="archive-item__desc">The fortress, the feast hall, the archive, and the passage nobody talks about.</div>
+              <div class="archive-item__meta">Single Page · Walkthrough</div>
+            </a>
+            <a href="abagarlas" class="archive-item fade-in">
+              <div class="archive-item__house archive-item__house--ayleid">Abagarlas</div>
+              <div class="archive-item__title">Notes on the Passage Beyond</div>
+              <div class="archive-item__desc">21 pages. The excavation, the sealed chambers, the soul gem hall, and the throne room nobody was supposed to find.</div>
+              <div class="archive-item__meta">PDF · 21 pages · Illustrated</div>
+            </a>
+            <a href="creature" class="archive-item fade-in">
+              <div class="archive-item__house archive-item__house--wyrd">Creature-From-Beyond</div>
+              <div class="archive-item__title">Coming Soon</div>
+              <div class="archive-item__desc">Open in-game. The written part is still in progress.</div>
+              <div class="archive-item__meta">In Progress</div>
+            </a>
+          </div>
+          <div class="fade-in" style="text-align:center; margin-top:3rem;">
+            <p class="tagline" style="color:var(--text-faint); font-size:0.9rem;">Three houses. Three stories. The craft stays the same — build until it feels <strong>real!</strong></p>
+          </div>
+        </div>
+      </section>
+
+      <div class="closing-quote fade-in">
+        <div class="divider divider--wide"><span>◆ — — — — ◇ — — — — ◆ — — — — ◇ — — — — ◆</span></div>
+        <p>Every house has a door. Not all of them lead where you expect.</p>
+        <div class="divider"><span>◇ — — ◆ — — ◇</span></div>
+      </div>
+
+      <footer class="footer">
+        <div class="footer-signature">— Valyria, of the ruling blood of Clan Lar</div>
+        <div class="footer-meta">@Vaelarn · PC — EU</div>
+      </footer>
+
+    </div>
+  
+    <!-- SEARCH OVERLAY -->
+    <div class="search-overlay" id="searchOverlay">
+      <div class="search__box">
+        <input type="text" class="search__input" placeholder="Search houses, lore, archives… (Ctrl+K)">
+        <div class="search__results"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
